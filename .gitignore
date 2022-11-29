@@ -1,0 +1,5 @@
+terraform-infra/*terraform*
+terraform-app/*terraform*
+
+!terraform-app/terraform.tfvars
+!terraform-infra/terraform.tfvars
