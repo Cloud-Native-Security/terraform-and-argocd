@@ -5,9 +5,6 @@ resource "helm_release" "argocd" {
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
 
-  write_kubeconfig      = true
-  config_output_path    = "/."
-
   set {
     name  = "service.type"
     value = "LoadBalancer"

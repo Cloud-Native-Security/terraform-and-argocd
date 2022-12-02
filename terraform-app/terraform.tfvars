@@ -1,3 +1,3 @@
 do_token = ""
 cluster_id = ""
-cluster_name = ""
+cluster_name = "demo"
