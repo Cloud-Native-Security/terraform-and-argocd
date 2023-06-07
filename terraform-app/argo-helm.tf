@@ -1,16 +1,10 @@
 resource "helm_release" "argocd" {
   name       = "argocd-helm"
-  namespace  = kubernetes_namespace.argocd_namespace.metadata.0.name
+  namespace  = "argocd"
+  create_namespace = true
 
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
 
-  set {
-    name  = "service.type"
-    value = "LoadBalancer"
-  }
-  set {
-    name  = "service.annotations.service\\.beta\\.kubernetes\\.io/do-loadbalancer-name"
-    value = format("%s-nginx-ingress", var.cluster_name)
-  }
+  # depends_on = [kubernetes_namespace.argocd_namespace]
 }

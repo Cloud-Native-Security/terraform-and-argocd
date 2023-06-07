@@ -1,3 +1,2 @@
-do_token = ""
-cluster_id = ""
-cluster_name = "demo"
+namespace = "argocd"
+cluster_name = "kind-demo"

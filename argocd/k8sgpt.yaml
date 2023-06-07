@@ -1,23 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: trivy-operator
+  name: k8sgpt
   namespace: argocd
 spec:
   project: default
   source:
-    chart: trivy-operator
-    repoURL: https://aquasecurity.github.io/helm-charts/
-    targetRevision: 0.14.0
+    chart: k8sgpt-operator
+    repoURL: https://charts.k8sgpt.ai/
+    targetRevision: 0.0.17
     helm:
       values: |
         serviceMonitor:
-          enabled: true # has to be false if you do not have Prometheus already installed
-        trivy:
-          ignoreUnfixed: true
+          enabled: true
+        GrafanaDashboard:
+          enabled: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: trivy-system
+    namespace: k8sgpt-operator-system
   syncPolicy:
     automated:
       prune: true
